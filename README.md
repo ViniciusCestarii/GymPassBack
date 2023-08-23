@@ -1,3 +1,7 @@
+# Set up
+
+docker compose up -d
+
 # App
 
 GymPass style app.
