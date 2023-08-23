@@ -4,11 +4,3 @@ import fastify from 'fastify'
 export const app = fastify()
 
 const prisma = new PrismaClient()
-
-prisma.user.create({
-  data: {
-    email: 'opa',
-    passwordHash: '123',
-    name: 'Vinicius',
-  }
-})

@@ -36,7 +36,7 @@ GymPass style app.
 
 - [ ] User can't be able to check-in if they aren't near a gym (100m)
 
-- [ ] User check-in can only be validated 20 minutes later it had been created
+- [ ] User check-in can only be validated 20 minutes after it had been created
 
 - [ ] User check-in can only be validated by admin
 
