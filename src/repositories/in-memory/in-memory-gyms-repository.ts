@@ -14,6 +14,14 @@ export class InMemoryGymsRepository implements GymsRepository {
     return gym
   }
 
+  async findManyByName(name: string, page:number): Promise<Gym[]> {
+    const gyms = this.items
+      .filter(gym => gym.name.includes(name))
+      .slice((page - 1) * 20, page * 20)
+
+    return gyms
+  }
+
   async create(data: Prisma.GymCreateInput) {
     const gym : Gym = {
       id: data.id ?? randomUUID(),
