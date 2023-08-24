@@ -8,7 +8,7 @@ GymPass style app.
 
 ## Rfs (Requsito funcionais) (funcionalidade)
 
-- [ ] Hable to sign in
+- [x] Hable to sign in
 
 - [ ] Hable to log in
 
@@ -30,7 +30,7 @@ GymPass style app.
 
 ## RNs (Regras de negócio) (condições ao requisito funcional)
 
-- [ ] User can't be hable to sign in with a duplicated e-mail
+- [x] User can't be hable to sign in with a duplicated e-mail
 
 - [ ] User can't be able to check-in 2 times in the same day
 
@@ -44,7 +44,7 @@ GymPass style app.
 
 ## RNFs (Requisitos não-funcionais) (técnico)
 
-- [ ] User password needs to be encrypted
+- [x] User password needs to be encrypted
 
 - [ ] Application data needs to be in a PostgreSQL bank
 
