@@ -12,8 +12,6 @@ export const register = async (request: FastifyRequest, reply: FastifyReply) => 
 
   const { name, email, password } = registerBodySchema.parse(request.body)
 
-  console.log(name, email, password)
-
   try {
     const registerService = makeRegisterService()
 
