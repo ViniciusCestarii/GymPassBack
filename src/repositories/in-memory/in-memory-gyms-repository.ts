@@ -7,7 +7,7 @@ import { GymWithDistance } from "@/types/gym-with-distance";
 export class InMemoryGymsRepository implements GymsRepository {
   public items: Gym[] = []
 
-  async findById(id: string): Promise<Gym | null> {
+  async findById(id: string) {
     const gym = this.items.find(gym => gym.id === id)
 
     if(!gym){
@@ -16,7 +16,7 @@ export class InMemoryGymsRepository implements GymsRepository {
     return gym
   }
 
-  async searchManyByName(name: string, page:number): Promise<Gym[]> {
+  async searchManyByName(name: string, page:number) {
     const gyms = this.items
       .filter(gym => gym.name.includes(name))
       .slice((page - 1) * 20, page * 20)
@@ -24,7 +24,7 @@ export class InMemoryGymsRepository implements GymsRepository {
     return gyms
   }
 
-  async findManyNearby(params: findManyNearbyParams): Promise<GymWithDistance[]> {
+  async findManyNearby(params: findManyNearbyParams) {
     const { latitude, longitude } = params;
   
     const nearbyGymsWithDistance = this.items.map(gym => {

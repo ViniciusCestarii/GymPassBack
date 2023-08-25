@@ -5,6 +5,7 @@ import { InMemoryGymsRepository } from "@/repositories/in-memory/in-memory-gyms-
 import { Decimal } from "@prisma/client/runtime/library"
 import { MaxDistanceError } from "./errors/max-distance-error"
 import { MaxNumberOfCheckInsError } from "./errors/max-number-of-check-ins-error"
+import { ResourceNotFoundError } from "./errors/resource-not-found-error"
 
 // Unit test
 
@@ -105,5 +106,15 @@ describe('Check-in Service', () => {
       userLatitude: -27.0989714,
       userLongitude: -48.9233522,
     })).rejects.toBeInstanceOf(MaxDistanceError)
+  })
+
+  it('should not be able to check in a non-registered gym', async () => {
+
+    await expect(() => sut.execute({
+      gymId: 'gymID2',
+      userId: 'gymID',
+      userLatitude: -27.0989714,
+      userLongitude: -48.9233522,
+    })).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })
