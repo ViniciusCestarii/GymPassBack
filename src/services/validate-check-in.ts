@@ -5,6 +5,8 @@ import { ResourceNotFoundError } from "./errors/resource-not-found-error"
 import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coodinates"
 import { MaxDistanceError } from "./errors/max-distance-error"
 import { MaxNumberOfCheckInsError } from "./errors/max-number-of-check-ins-error"
+import dayjs from "dayjs"
+import { LateCheckInValidationError } from "./errors/late-check-in-validation-error"
 
 // here are the business rules
 
@@ -28,6 +30,15 @@ export class ValidateCheckInService {
 
     if (!checkIn) {
       throw new ResourceNotFoundError()
+    }
+
+    const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(
+      checkIn.createdAt, 
+      'minute'
+    )
+
+    if(distanceInMinutesFromCheckInCreation > 20){
+      throw new LateCheckInValidationError()
     }
 
     checkIn.validatedAt = new Date()

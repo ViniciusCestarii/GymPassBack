@@ -18,7 +18,7 @@ GymPass style app.
 
 - [x] Hable to user get user check-ins historic
 
-- [s] Hable to user search for near gyms
+- [x] Hable to user search for near gyms
 
 - [x] Hable to user search gyms for name
 
@@ -36,7 +36,7 @@ GymPass style app.
 
 - [x] User can't be able to check-in if they aren't near a gym (100m)
 
-- [ ] User check-in can only be validated 20 minutes after it had been created
+- [x] User check-in can only be validated 20 minutes after it had been created
 
 - [ ] User check-in can only be validated by admin
 
