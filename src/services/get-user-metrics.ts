@@ -2,11 +2,11 @@ import { CheckInsRepository } from "@/repositories/check-ins-repository"
 
 // here are the business rules
 
-interface GetUserMetricsRequest {
+interface GetUserMetricsServiceRequest {
   userId: string
 }
 
-interface GetUserMetricsResponse {
+interface GetUserMetricsServiceResponse {
   checkInsCount: number
 }
 
@@ -15,7 +15,7 @@ export class GetUserMetricsService {
     private checkInsRepository: CheckInsRepository,
   ) {}
 
-  async execute({ userId}: GetUserMetricsRequest): Promise<GetUserMetricsResponse> {
+  async execute({ userId}: GetUserMetricsServiceRequest): Promise<GetUserMetricsServiceResponse> {
     const checkInsCount = await this.checkInsRepository.countByUserId(userId)
 
     return {

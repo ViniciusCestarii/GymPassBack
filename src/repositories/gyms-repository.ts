@@ -1,7 +1,14 @@
+import { GymWithDistance } from "@/types/gym-with-distance";
 import { Gym, Prisma } from "@prisma/client";
 
+export interface findManyNearbyParams {
+  latitude: number
+  longitude: number
+}
+
 export interface GymsRepository {
-  findById(id: string): Promise<Gym | null>
   create(data: Prisma.GymCreateInput): Promise<Gym>
-  findManyByName(name: string, page:number): Promise<Gym[]>
+  findById(id: string): Promise<Gym | null>
+  searchManyByName(name: string, page:number): Promise<Gym[]>
+  findManyNearby({latitude, longitude} : findManyNearbyParams): Promise<GymWithDistance[]>
 }

@@ -3,12 +3,12 @@ import { CheckIn } from "@prisma/client"
 
 // here are the business rules
 
-interface FetchUserCheckInHistoryRequest {
+interface FetchUserCheckInHistoryServiceRequest {
   userId: string
   page: number
 }
 
-interface FetchUserCheckInHistoryResponse {
+interface FetchUserCheckInHistoryServiceResponse {
   checkIns: CheckIn[]
 }
 
@@ -17,7 +17,7 @@ export class FetchUserCheckInHistoryService {
     private checkInsRepository: CheckInsRepository,
   ) {}
 
-  async execute({ userId, page}: FetchUserCheckInHistoryRequest): Promise<FetchUserCheckInHistoryResponse> {
+  async execute({ userId, page}: FetchUserCheckInHistoryServiceRequest): Promise<FetchUserCheckInHistoryServiceResponse> {
     const checkIns = await this.checkInsRepository.findManyByUserId(userId, page)
 
     return {

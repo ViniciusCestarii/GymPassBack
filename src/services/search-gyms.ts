@@ -6,21 +6,21 @@ import { GymsRepository } from "@/repositories/gyms-repository"
 
 // here are the business rules
 
-interface SearchGymRequest {
+interface SearchGymServiceRequest {
   name: string
   page: number
 }
 
-interface SearchGymResponse {
+interface SearchGymServiceResponse {
   gyms: Gym[]
 }
 
 export class SearchGymService {
   constructor(private gymsRepository: GymsRepository) { }
 
-  async execute({ name, page }: SearchGymRequest): Promise<SearchGymResponse> {
+  async execute({ name, page }: SearchGymServiceRequest): Promise<SearchGymServiceResponse> {
 
-    const gyms = await this.gymsRepository.findManyByName(name, page)
+    const gyms = await this.gymsRepository.searchManyByName(name, page)
 
     return {
       gyms
