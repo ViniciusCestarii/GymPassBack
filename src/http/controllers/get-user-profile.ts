@@ -11,9 +11,9 @@ export const getUserProfile = async (request: FastifyRequest, reply: FastifyRepl
   const { id } = getUserProfileParamsSchema.parse(request.params)
 
   try {
-    const registerService = makeGetUserProfileService()
+    const getUserService = makeGetUserProfileService()
 
-    await registerService.execute({ userId: id })
+    await getUserService.execute({ userId: id })
   } catch (err) {
     if(err instanceof ResourceNotFoundError) {
       return reply.status(404).send(err.message)

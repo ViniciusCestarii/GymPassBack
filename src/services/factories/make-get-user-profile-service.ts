@@ -3,7 +3,7 @@ import { GetUserProfileService } from "../get-user-profile"
 
 export const makeGetUserProfileService = () => {
   const prismaUsersRepository = new PrismaUsersRepository()
-  const authenticateService = new GetUserProfileService(prismaUsersRepository)
+  const service = new GetUserProfileService(prismaUsersRepository)
   
-  return authenticateService
+  return service
 }
