@@ -16,7 +16,7 @@ app.register(fastifyJwt, {
     signed: false,
   },
   sign: {
-    expiresIn: '10m'
+    expiresIn: '20m'
   }
 })
 app.register(fastifyCookie)
