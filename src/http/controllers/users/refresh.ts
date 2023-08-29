@@ -4,13 +4,17 @@ export const refresh = async (request: FastifyRequest, reply: FastifyReply) => {
 
   await request.jwtVerify({ onlyCookie: true }) // this will throw an error if the cookie is not present (will ignore header)
 
-  const token = await reply.jwtSign({}, {
+  const { role } = request.user
+
+  const token = await reply.jwtSign(
+    { role }, {
     sign: {
       sub: request.user.sub,
     }
   })
 
-  const refreshToken = await reply.jwtSign({}, {
+  const refreshToken = await reply.jwtSign(
+    { role }, {
     sign: {
       sub: request.user.sub,
       expiresIn: "7d"
