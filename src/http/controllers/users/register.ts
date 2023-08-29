@@ -15,7 +15,10 @@ export const register = async (request: FastifyRequest, reply: FastifyReply) => 
   try {
     const registerService = makeRegisterService()
 
-    await registerService.execute({ name, email, password })
+    const { user } = await registerService.execute({ name, email, password })
+
+    return reply.status(201).send({userId: user.id})
+
   } catch (err) {
     if(err instanceof UserAlreadyExistsError) {
       return reply.status(409).send(err.message)
@@ -23,6 +26,4 @@ export const register = async (request: FastifyRequest, reply: FastifyReply) => 
 
     throw err //fastify will handle this error
   }
-
-  return reply.status(201).send()
 }

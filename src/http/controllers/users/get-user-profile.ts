@@ -13,7 +13,11 @@ export const getUserProfile = async (request: FastifyRequest, reply: FastifyRepl
   try {
     const getUserService = makeGetUserProfileService()
 
-    await getUserService.execute({ userId: id })
+    const { user } = await getUserService.execute({ userId: id })
+    return reply.status(200).send({
+      ...user,
+      passwordHash: undefined,
+    })
   } catch (err) {
     if(err instanceof ResourceNotFoundError) {
       return reply.status(404).send(err.message)
@@ -21,6 +25,4 @@ export const getUserProfile = async (request: FastifyRequest, reply: FastifyRepl
 
     throw err //fastify will handle this error
   }
-
-  return reply.status(200).send()
 }

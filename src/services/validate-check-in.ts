@@ -11,7 +11,6 @@ import { LateCheckInValidationError } from "./errors/late-check-in-validation-er
 // here are the business rules
 
 interface ValidateCheckInServiceRequest {
-  userId: string
   checkInId: string
 }
 
@@ -24,7 +23,7 @@ export class ValidateCheckInService {
     private checkInsRepository: CheckInsRepository,
   ) { }
 
-  async execute({ userId, checkInId }: ValidateCheckInServiceRequest): Promise<ValidateCheckInServiceResponse> {
+  async execute({ checkInId }: ValidateCheckInServiceRequest): Promise<ValidateCheckInServiceResponse> {
 
     const checkIn = await this.checkInsRepository.findById(checkInId)
 

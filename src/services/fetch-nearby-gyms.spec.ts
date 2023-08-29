@@ -1,16 +1,16 @@
 import { expect, describe, it, beforeEach } from "vitest"
 import { InMemoryGymsRepository } from "@/repositories/in-memory/in-memory-gyms-repository"
-import { FetchNearbyGymsServiceService } from "./fetch-nearby-gyms"
+import { FetchNearbyGymsService } from "./fetch-nearby-gyms"
 
 // Unit test
 
 let inMemoryGymsRepository: InMemoryGymsRepository
-let sut: FetchNearbyGymsServiceService
+let sut: FetchNearbyGymsService
 
 describe('Fetch Nearby Gyms Service', () => {
   beforeEach(() => {
     inMemoryGymsRepository = new InMemoryGymsRepository()
-    sut = new FetchNearbyGymsServiceService(inMemoryGymsRepository) //system under test
+    sut = new FetchNearbyGymsService(inMemoryGymsRepository) //system under test
   })
 
   it('should be able to fetch nearby gyms', async () => {

@@ -1,7 +1,3 @@
-import { UsersRepository } from "@/repositories/users-repository"
-import { hash } from "bcryptjs"
-import { UserAlreadyExistsError } from "./errors/user-already-exists-error"
-import { Gym, User } from "@prisma/client"
 import { GymsRepository } from "@/repositories/gyms-repository"
 import { GymWithDistance } from "@/types/gym-with-distance"
 
@@ -16,7 +12,7 @@ interface FetchNearbyGymsServiceResponse {
   gymsWithDistance: GymWithDistance[]
 }
 
-export class FetchNearbyGymsServiceService {
+export class FetchNearbyGymsService {
   constructor(private gymsRepository: GymsRepository) { }
 
   async execute({ userLatitude, userLongitude }: FetchNearbyGymsServiceRequest): Promise<FetchNearbyGymsServiceResponse> {

@@ -1,9 +1,9 @@
 import { PrismaGymsRepository } from "@/repositories/prisma/prisma-gyms-repository"
-import { FetchNearbyGymsServiceService } from "../fetch-nearby-gyms"
+import { FetchNearbyGymsService} from "../fetch-nearby-gyms"
 
-export const makeFetchNearbyGymsServiceService = () => {
+export const makeFetchNearbyGymsService = () => {
   const prismaGymsRepository = new PrismaGymsRepository()
-  const service = new FetchNearbyGymsServiceService(prismaGymsRepository)
+  const service = new FetchNearbyGymsService(prismaGymsRepository)
   
   return service
 }
