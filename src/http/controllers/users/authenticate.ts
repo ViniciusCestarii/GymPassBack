@@ -22,7 +22,21 @@ export const authenticate = async (request: FastifyRequest, reply: FastifyReply)
       }
     })
 
-    return reply.status(200).send({
+    const refreshToken = await reply.jwtSign({}, {
+      sign: {
+        sub: user.id,
+        expiresIn: "7d"
+      }
+    })
+
+    return reply
+    .setCookie("refreshToken", refreshToken, {
+      path: "/",// all back can access this cookie
+      secure: true, // HTTPS only
+      sameSite: true, // only send cookie if the request is comming from the same origin
+      httpOnly: true, // only send cookie over HTTP(S), not client JavaScript, this will prevent XSS attacks
+    })
+    .status(200).send({
       token,
     })
   } catch (err) {
