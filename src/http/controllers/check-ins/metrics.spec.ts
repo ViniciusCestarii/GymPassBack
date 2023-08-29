@@ -4,7 +4,7 @@ import { createAndAuthenticateUser } from "@/utils/test/create-and-authenticate-
 import request from "supertest";
 import {afterAll, beforeAll, describe, expect, it} from "vitest"
 
-describe('Get User Check-in History (e2e)', () => {
+describe('Get User Check-in Metrics (e2e)', () => {
 
   beforeAll(async () => {
     await app.ready()
@@ -14,7 +14,7 @@ describe('Get User Check-in History (e2e)', () => {
     await app.close()
   })
 
-  it('should be able fetch a user check-in history', async () => {
+  it('should be able to get the total number of check-ins', async () => {
     const { token, userId } = await createAndAuthenticateUser(app)
 
     const createGymResponse = await request(app.server)
@@ -42,24 +42,11 @@ describe('Get User Check-in History (e2e)', () => {
     })
 
     const historyReponse = await request(app.server)
-    .get('/check-ins/history')
-    .query({
-      page: 1,
-    })
+    .get('/check-in/metrics')
     .set('Authorization', `Bearer ${token}`)
     .send()
     
     expect(historyReponse.status).toBe(200)
-    expect(historyReponse.body.checkIns).toHaveLength(2)
-    expect(historyReponse.body.checkIns).toEqual([
-      expect.objectContaining({
-        gymId: createGymResponse.body.id,
-        userId: userId,
-      }),
-      expect.objectContaining({
-        gymId: createGymResponse.body.id,
-        userId: userId,
-      }),
-    ])
+    expect(historyReponse.body.checkInsCount).toEqual(2)
   })
 })
