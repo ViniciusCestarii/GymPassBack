@@ -38,9 +38,9 @@ GymPass style app.
 
 - [x] User check-in can only be validated until 20 minutes after it had been created
 
-- [ ] User check-in can only be validated by admin
+- [x] User check-in can only be validated by admin
 
-- [ ] Gyms can only be registered in by admin
+- [x] Gyms can only be registered in by admin
 
 ## Non-functional requirement RNFs (Requisitos não-funcionais) (técnico)
 
@@ -50,4 +50,4 @@ GymPass style app.
 
 - [x] All the data lists need to be paginated with 20 itens per page
 
-- [ ] User needs to be indentified by a JWT
+- [x] User needs to be indentified by a JWT
