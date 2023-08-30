@@ -4,7 +4,7 @@ docker compose up -d
 
 # App
 
-GymPass style app.
+Server of a GymPass style app.
 
 ## Functional requirement Rfs (Requsito funcionais) (funcionalidade)
 
