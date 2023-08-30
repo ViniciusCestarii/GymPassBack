@@ -8,25 +8,25 @@ Server of a GymPass style app.
 
 ## Functional requirement Rfs (Requsito funcionais) (funcionalidade)
 
-- [x] Hable to register
+- [x] Able to register
 
-- [x] Hable to authenticate
+- [x] Able to authenticate
 
-- [x] Hable to get user perfil
+- [x] Able to get user perfil
 
-- [x] Hable to get the number of check-ins of the user
+- [x] Able to get the number of check-ins of the user
 
-- [x] Hable to user get user check-ins historic
+- [x] Able to user get user check-ins historic
 
-- [x] Hable to user search for near gyms
+- [x] Able to user search for near gyms
 
-- [x] Hable to user search gyms for name
+- [x] Able to user search gyms for name
 
-- [x] Hable to user check-in in a gym
+- [x] Able to user check-in in a gym
 
-- [x] Hable to validate user gym check-in
+- [x] Able to validate user gym check-in
 
-- [x] Hable to register gyms
+- [x] Able to register gyms
 
 ## Business rules RNs (Regras de negócio) (condições ao requisito funcional)
 
